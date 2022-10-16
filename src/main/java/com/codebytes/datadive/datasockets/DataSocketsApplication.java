@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class DataSocketsApplication {
 
 	public static void main(String[] args) {
+		System.out.println("Inside SpringBoot Main");
 		SpringApplication.run(DataSocketsApplication.class, args);
 	}
 
