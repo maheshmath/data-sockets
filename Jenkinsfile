@@ -10,11 +10,15 @@ pipeline {
             steps {
 
                 git 'https://github.com/maheshmath/data-sockets.git'
-
+                script{
+                    current_version = readFile 'version.txt'
+                    print("current_version: $current_version")
+                }
                 sh """
-                export PATH=$PATH:/usr/local/bin
-                mvn -Dmaven.test.failure.ignore=true clean package"
-                docker build -t temp:0.1 .
+                    mvn -Dmaven.test.failure.ignore=true clean package"
+                    docker build -t "data-sockets":"$current_version" .
+                    docker push data-sockets:$current_version
+                    docker rmi data-sockets:$current_version
                 """
 
             }
