@@ -15,7 +15,7 @@ pipeline {
                     print("current_version: $current_version")
                 }
                 sh """
-                    mvn -Dmaven.test.failure.ignore=true clean package"
+                    mvn -Dmaven.test.failure.ignore=true clean package
                     imagename = "$DOCKER_HUB/data-sockets:$current_version"
                     echo $imagename
                     docker build -t $imagename .
