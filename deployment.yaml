@@ -4,22 +4,22 @@ metadata:
   name: data-sockets
   namespace: data-dive
   labels:
-    app: nginx
+    app: data-sockets
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: nginx
+      app: data-sockets
   template:
     metadata:
       labels:
-        app: nginx
+        app: data-sockets
     spec:
       containers:
-      - name: nginx
+      - name: data-sockets
         image: maheshmath/data-sockets:latest
         ports:
-        - containerPort: 30007
+        - containerPort: 30005
 ---
 apiVersion: v1
 kind: Service
@@ -31,6 +31,6 @@ spec:
   selector:
     app: data-sockets
   ports:
-    - port: 30007
-      targetPort: 30007
-      nodePort: 30007
+    - port: 30005
+      targetPort: 30005
+      nodePort: 30002

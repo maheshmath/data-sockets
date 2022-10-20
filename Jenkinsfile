@@ -21,7 +21,9 @@ pipeline {
                     echo $imagename
                     docker build -t "$DOCKER_HUB/data-sockets:$current_version" -t "$DOCKER_HUB/data-sockets:latest" . 
                     docker push $imagename
-                    docker rmi $imagename 
+                    docker push "$DOCKER_HUB/data-sockets:latest"
+                    docker rmi $imagename "$DOCKER_HUB/data-sockets:latest"
+
                 """
 
             }
