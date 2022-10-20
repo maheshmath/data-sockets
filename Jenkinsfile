@@ -16,7 +16,7 @@ pipeline {
                 }
                 sh """
                     mvn -Dmaven.test.failure.ignore=true clean package
-                    imagename = "$DOCKER_HUB/data-sockets:$current_version"
+                    export imagename = "$DOCKER_HUB/data-sockets:$current_version"
                     echo $imagename
                     docker build -t $imagename .
                     docker push $imagename
