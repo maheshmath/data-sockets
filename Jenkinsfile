@@ -19,7 +19,7 @@ pipeline {
                 sh """
                     mvn -Dmaven.test.failure.ignore=true clean package
                     echo $imagename
-                    docker build -t "$DOCKER_HUB/data-sockets:$current_version" . 
+                    docker build -t "$DOCKER_HUB/data-sockets:$current_version" -t "$DOCKER_HUB/data-sockets:latest" . 
                     docker push $imagename
                     docker rmi $imagename 
                 """
