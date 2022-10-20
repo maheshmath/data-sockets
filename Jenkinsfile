@@ -8,9 +8,15 @@ pipeline {
     stages {
         stage('Build'){
             steps {
+
                 git 'https://github.com/maheshmath/data-sockets.git'
 
-                sh "mvn -Dmaven.test.failure.ignore=true clean package"
+                sh """
+                export PATH=$PATH:/usr/local/bin
+                mvn -Dmaven.test.failure.ignore=true clean package"
+                docker build -t temp:0.1 .
+                """
+
             }
 
             post {
