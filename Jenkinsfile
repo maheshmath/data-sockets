@@ -23,6 +23,7 @@ pipeline {
                     docker push $imagename
                     docker push "$DOCKER_HUB/data-sockets:latest"
                     docker rmi $imagename "$DOCKER_HUB/data-sockets:latest"
+                    kubectl apply -f deployment.yaml
 
                 """
 
