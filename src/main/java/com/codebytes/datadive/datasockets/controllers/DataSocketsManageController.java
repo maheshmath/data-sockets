@@ -8,6 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class DataSocketsManageController  {
     @GetMapping(value="/v1/data-sockets")
     public String getAllSockets() {
-        return "here is the list";
+        return "{1:MySQL;2:MSSQL}";
     }
 }
