@@ -17,7 +17,7 @@ pipeline {
                     print("tag name: $imagename")
                 }
                 sh """
-                    
+                    export PATH=/usr/local/bin:$PATH
                     mvn -Dmaven.test.failure.ignore=true clean package
                     echo $imagename
                     docker build -t "$DOCKER_HUB/data-sockets:$current_version" -t "$DOCKER_HUB/data-sockets:latest" . 
